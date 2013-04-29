@@ -7,7 +7,7 @@ function! RailsScriptIfExists(name)
   if glob("`ls -a | grep '.zeus.sock'`") != ""
     return "zeus " . a:name
   " Bundle exec
-  if isdirectory(".bundle") || (exists("b:rails_root") && isdirectory(b:rails_root . "/.bundle"))
+  elseif isdirectory(".bundle") || (exists("b:rails_root") && isdirectory(b:rails_root . "/.bundle"))
     return "bundle exec " . a:name
   " System Binary
   else
