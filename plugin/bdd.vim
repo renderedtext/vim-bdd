@@ -6,6 +6,8 @@ function! RailsScriptIfExists(name)
   " Zeus
   if filereadable(".zeus.sock") != ""
     return "zeus " . a:name
+  " Spring
+  elseif filereadable("config/spring.rb")
   " Bundle exec
   elseif isdirectory(".bundle") || (exists("b:rails_root") && isdirectory(b:rails_root . "/.bundle"))
     return "bundle exec " . a:name
