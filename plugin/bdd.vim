@@ -4,7 +4,7 @@
 
 function! RailsScriptIfExists(name)
   " Zeus
-  if glob("`ls -a | grep '.zeus.sock'`") != ""
+  if filereadable(".zeus.sock") != ""
     return "zeus " . a:name
   " Bundle exec
   elseif isdirectory(".bundle") || (exists("b:rails_root") && isdirectory(b:rails_root . "/.bundle"))
