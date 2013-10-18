@@ -25,7 +25,7 @@ function! RunSpec(args)
 endfunction
 
 function! RunCucumber(args)
-  let cucumber = RailsScriptIfExists("cucumber --drb")
+  let cucumber = RailsScriptIfExists("cucumber")
   let cmd = cucumber . " " . @% . a:args
   execute ":! echo " . cmd . " && " . cmd
 endfunction
