@@ -11,5 +11,7 @@ Shortcuts:
 Spring
 ------
 
-For [Spring](https://github.com/jonleighton/spring) support add
-`config/spring.rb` file. The file can be empty.
+vim-bdd supports only globally installed Spring (e.g. `gem install spring`).
+
+For [Spring](https://github.com/jonleighton/spring) support create
+`~/spring.rb` file. The file can be empty.
