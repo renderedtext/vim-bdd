@@ -19,7 +19,7 @@ function! RailsScriptIfExists(name)
 endfunction
 
 function! RunSpec(args)
-  let spec = RailsScriptIfExists("rspec --drb")
+  let spec = RailsScriptIfExists("rspec")
   let cmd = spec . " " . a:args . " -fn -c " . @%
   execute ":! echo " . cmd . " && " . cmd
 endfunction
