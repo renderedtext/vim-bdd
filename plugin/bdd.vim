@@ -20,7 +20,7 @@ endfunction
 
 function! RunSpec(args)
   let spec = RailsScriptIfExists("rspec")
-  let cmd = spec . " " . a:args . " -fn -c " . @%
+  let cmd = spec . " " . @% . a:args
   execute ":! echo " . cmd . " && " . cmd
 endfunction
 
@@ -42,7 +42,7 @@ function! RunTest(args)
   if @% =~ "\.feature$"
     call RunCucumber(":" . line('.') . a:args)
   elseif @% =~ "\.rb$"
-    call RunSpec("-l " . line('.') . a:args)
+    call RunSpec(":" . line('.') . a:args)
   end
 endfunction
 
