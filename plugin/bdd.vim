@@ -2,12 +2,12 @@
 " Vim functions to run RSpec and Cucumber on the current file and optionally on
 " the spec/scenario under the cursor.
 
-function! RailsScriptIfExists(name)
+function! ScriptIfExists(name)
   " Zeus
   if glob("`ls -a | grep '.zeus.sock'`") != ""
     return "zeus " . a:name
   " Spring
-  elseif filereadable($HOME . "/.spring.rb")
+  elseif filereadable($HOME . "/.spring.rb") && filereadable("script/rails")
     return "spring " . a:name
   " Bundle exec
   elseif isdirectory(".bundle") || (exists("b:rails_root") && isdirectory(b:rails_root . "/.bundle"))
@@ -19,13 +19,13 @@ function! RailsScriptIfExists(name)
 endfunction
 
 function! RunSpec(args)
-  let spec = RailsScriptIfExists("rspec")
+  let spec = ScriptIfExists("rspec")
   let cmd = spec . " " . @% . a:args
   execute ":! echo " . cmd . " && " . cmd
 endfunction
 
 function! RunCucumber(args)
-  let cucumber = RailsScriptIfExists("cucumber")
+  let cucumber = ScriptIfExists("cucumber")
   let cmd = cucumber . " " . @% . a:args
   execute ":! echo " . cmd . " && " . cmd
 endfunction
