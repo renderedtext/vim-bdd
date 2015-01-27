@@ -7,8 +7,8 @@ function! ScriptIfExists(name)
   if glob("`ls -a | grep '.zeus.sock'`") != ""
     return "zeus " . a:name
   " Spring
-  elseif filereadable($HOME . "/.spring.rb") && filereadable("script/rails")
-    return "spring " . a:name
+  elseif filereadable("bin/spring") && filereadable("script/rails")
+    return "bin/spring " . a:name
   " Bundle exec
   elseif isdirectory(".bundle") || (exists("b:rails_root") && isdirectory(b:rails_root . "/.bundle"))
     return "bundle exec " . a:name
