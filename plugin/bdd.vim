@@ -41,7 +41,7 @@ function! RunTestFile(args)
   elseif @% =~ "\.rb$"
     call RunSpec("" . a:args)
   elseif @% =~ "\.exs$"
-    call RunExUnit(":" . line('.') . a:args)
+    call RunExUnit("" . a:args)
   end
 endfunction
 
