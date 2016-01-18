@@ -30,11 +30,18 @@ function! RunCucumber(args)
   execute ":! echo " . cmd . " && " . cmd
 endfunction
 
+function! RunExUnit(args)
+  let cmd = "mix test" . " " . @% . a:args
+  execute ":! echo " . cmd . " && " . cmd
+endfunction
+
 function! RunTestFile(args)
   if @% =~ "\.feature$"
     call RunCucumber("" . a:args)
   elseif @% =~ "\.rb$"
     call RunSpec("" . a:args)
+  elseif @% =~ "\.exs$"
+    call RunExUnit("" . a:args)
   end
 endfunction
 
@@ -43,6 +50,8 @@ function! RunTest(args)
     call RunCucumber(":" . line('.') . a:args)
   elseif @% =~ "\.rb$"
     call RunSpec(":" . line('.') . a:args)
+  elseif @% =~ "\.exs$"
+    call RunExUnit(":" . line('.') . a:args)
   end
 endfunction
 
