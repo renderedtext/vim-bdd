@@ -18,21 +18,29 @@ function! ScriptIfExists(name)
   end
 endfunction
 
+function! RunCommand(cmd)
+  if has("nvim")
+    return ":terminal " . a:cmd
+  else
+    return ":! " . a:cmd
+  endif
+endfunction
+
 function! RunSpec(args)
   let spec = ScriptIfExists("rspec")
   let cmd = spec . " " . @% . a:args
-  execute ":! echo " . cmd . " && " . cmd
+  execute RunCommand(cmd)
 endfunction
 
 function! RunCucumber(args)
   let cucumber = ScriptIfExists("cucumber")
   let cmd = cucumber . " " . @% . a:args
-  execute ":! echo " . cmd . " && " . cmd
+  execute RunCommand(cmd)
 endfunction
 
 function! RunExUnit(args)
   let cmd = "mix test" . " " . @% . a:args
-  execute ":! echo " . cmd . " && " . cmd
+  execute RunCommand(cmd)
 endfunction
 
 function! RunTestFile(args)
