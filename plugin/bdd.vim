@@ -1,6 +1,6 @@
 " bdd.vim
-" Vim functions to run RSpec and Cucumber on the current file and optionally on
-" the spec/scenario under the cursor.
+" Vim functions to run Ruby's RSpec and Cucumber or Elixir's ExUnit on the
+" current file and optionally on the spec/scenario under the cursor.
 
 function! ScriptIfExists(name)
   " Zeus
