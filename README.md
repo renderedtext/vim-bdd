@@ -1,7 +1,12 @@
 vim-bdd
 =======
 
-Vim functions to run RSpec and Cucumber on the current cursor or file. It also supports Spork, Zeus and Spring.
+Vim functions to run Ruby and Elixir tests on the current cursor or file.
+
+Supported are:
+
+- Ruby: RSpec and Cucumber tests; Spork, Zeus and Spring runners.
+- Elixir: ExUnit tests.
 
 Shortcuts:
 
